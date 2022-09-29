@@ -1,0 +1,95 @@
+version: "3.1"
+nlu:
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - Whatsup
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+    - Sup
+    - Hi
+- intent: inform
+  examples: |
+    - Do you have coffee?
+    - what coffees do you have?
+    - I want to buy coffee
+    - show me the menu
+    - i would like a cup of coffee
+    - what flavour of coffee do you have?
+    - coffee please!
+    - What do your serve?
+    - I want coffee
+    - I would like a cup of coffee
+- intent: place_order
+  examples: |
+    - Give me [Cappuchino](coffee_type)
+    - I would have [cappuchino](coffee_type)
+    - I would like [cappuchino](coffee_type)
+    - [Cappuchino](coffee_type)
+    - Cappuchino(coffee_type) please
+    - Give [Au Laite](coffee_type)
+    - I would have [Au Laite](coffee_type)
+    - I would like [Au Laite](coffee_type)
+    - [Au Laite](coffee_type) please!
+    - I would have [Americano](coffee_type)
+    - I would like [Americano](coffee_type)
+    - Give me [Americano](coffee_type)
+    - [Americano](coffee_type)
+    - I would like [Simple Coffee](coffee_type)
+    - Give me [Simple Coffee](coffee_type)
+    - I would have [Simple Coffee](coffee_type)
+    - [Simple Coffee](coffee_type)
+    - I would Like a cup of [Americano](coffee_type)
+- intent: number
+  examples: |
+    - [one](coffee_number)
+    - [two](coffee_number)
+    - [three](coffee_number)
+    - [four](coffee_number)
+- intent: affirm
+  examples: |
+    - ok
+    - aiit
+    - okay
+    - k
+    - kk
+    - yes
+    - Yh
+    - Yep
+    - sure
+- intent: goodbye
+  examples: |
+    - bye
+    - later
+    - byebye
+    - bye bye
+- intent: deny
+  examples: |
+    - no
+    - nope
+    - Nah
+    - no worries
+    - nvm
+    - Don't worry
+    - dont worry
+- intent: gratitude
+  examples: |
+    - Thank you
+    - Thanks a lot
+    - Thanks
+- intent: bot_challenge
+  examples: |
+    - Are you a bot?
+    - What are you?
+    - I am speaking with a human?
+    - Are you a human?

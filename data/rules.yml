@@ -1,0 +1,33 @@
+version: "3.1"
+
+rules:
+
+- rule: Say goodbye anytime the user says goodbye
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+
+- rule: Letting the user know you are a bot
+  steps:
+  - intent: bot_challenge
+  - action: utter_iamabot
+# This rule helps get information about the orders being places by the user
+- rule: Activate form
+  steps:
+  - intent: place_order
+  - action: coffee_form
+  - active_loop: coffee_form
+
+# What should happen once the form has been filled
+- rule: Submit form
+  condition:
+  # Condition that form is active.
+  - active_loop: coffee_form
+  steps:
+  # Form is deactivated
+  - action: coffee_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  # The actions we want to run when the form is submitted.
+  - action: utter_placing_order

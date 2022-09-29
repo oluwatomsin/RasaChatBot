@@ -1,0 +1,96 @@
+version: '3.1'
+intents:
+- affirm
+- bot_challenge
+- deny
+- goodbye
+- gratitude
+- greet
+- inform
+- number:
+    use_entities:
+      - coffee_number
+- place_order:
+    use_entities:
+      - coffee_type
+
+entities:
+- coffee_type
+- coffee_number
+slots:
+  coffee_type:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: coffee_type
+  coffee_number:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: coffee_number
+
+forms:
+  coffee_form:
+    required_slots:
+        - coffee_type
+        - coffee_number
+responses:
+  utter_greet:
+  - text: Welcome to our online coffee shop!. What can i get your today?
+  - text: Hi there, What would you like to order?
+  - text: Hello there, what can I get you today?
+  utter_inform:
+  - text: We Serve the following types of coffee;
+    buttons:
+    - title: Simple coffee
+      payload: '/place_order{{"coffee_type":"Simple coffee"}}'
+    - title: Au Laite
+      payload: '/place_order{{"coffee_type":"Au Laite"}}'
+    - title: Americano
+      payload: '/place_order{{"coffee_type":"Americano"}}'
+    - title: Cappuchino
+      payload: '/place_order{{"coffee_type":"Cappuchino"}}'
+  utter_placing_order:
+  - text: Order placed for {coffee_number} cups of {coffee_type}.
+  utter_youwelcome:
+  - text: I am glad I could help
+  utter_apologies:
+  - text: Sorry I could help. You can reach out to our customer care on this phone number +2349053290717
+  utter_goodbye:
+  - text: Bye
+  - text: Bye Bye
+  - text: Take care
+  - text: Have a nice day
+  utter_iamabot:
+  - text: I am a bot created using Rasa Nlu
+  - text: I am a bot created to assist you order coffee online.
+  utter_ask_coffee_number:
+  - text: How many cups of {coffee_type} would you like?
+    buttons:
+    - title: One
+      payload: '/number{{"coffee_number":"One"}}'
+    - title: Two
+      payload: '/number{{"coffee_number":"Two"}}'
+    - title: Three
+      payload: '/number{{"coffee_number":"Three"}}'
+    - title: Four
+      payload: '/number{{"coffee_number":"Four"}}'
+  utter_ask_coffee_type:
+  - text: What type of coffee would you like?
+    buttons:
+    - title: Simple coffee
+      payload: '/place_order{{"coffee_type":"Simple coffee"}}'
+    - title: Au Laite
+      payload: '/place_order{{"coffee_type":"Au Laite"}}'
+    - title: Americano
+      payload: '/place_order{{"coffee_type":"Americano"}}'
+    - title: Cappuchino
+      payload: '/place_order{{"coffee_type":"Cappuchino"}}'
+
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+
